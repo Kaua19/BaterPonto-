@@ -1,29 +1,29 @@
 ⏱️ BaterPonto! — Sistema de Controle de Ponto e Banco de Horas
 📌 Visão Geral
 
-WorkTime é um sistema de controle de ponto pessoal, desenvolvido com foco em boas práticas de engenharia de software, modelagem de domínio e aprendizado profissional.
+BaterPonto! é um sistema de controle de ponto pessoal desenvolvido com foco em boas práticas de engenharia de software, modelagem de domínio e arquitetura limpa.
 
-O sistema permite que o usuário registre seus 4 pontos diários de trabalho, calcule automaticamente o tempo trabalhado, o saldo diário e mantenha um banco de horas acumulado por período, respeitando regras reais de empresas.
+O sistema permite o registro dos 4 pontos diários de trabalho, calcula automaticamente o tempo trabalhado, o saldo diário e mantém um banco de horas acumulado, respeitando regras reais adotadas por empresas.
 
-Este projeto foi pensado não apenas para funcionar, mas para demonstrar capacidade de raciocínio técnico, arquitetura limpa e regras de negócio bem definidas.
+Este projeto tem como objetivo principal aprendizado técnico profundo e composição de portfólio profissional.
 
-🎯 Objetivos do Projeto
+🎯 Objetivos
 
-Criar um sistema realista de controle de ponto
+Modelar um sistema realista de controle de ponto
 
 Aplicar conceitos de Domain-Driven Design (DDD)
 
-Separar corretamente domínio, aplicação e infraestrutura
+Separar claramente domínio, aplicação e infraestrutura
 
-Trabalhar regras de negócio claras e auditáveis
+Implementar regras de negócio claras, auditáveis e consistentes
 
-Servir como projeto de portfólio profissional
+Demonstrar maturidade em arquitetura e design de software
 
-🧩 Funcionalidades Principais
+🧩 Funcionalidades
 
-Autenticação de usuário (login e senha)
+Autenticação de usuários (login e senha)
 
-Registro de ponto diário com 4 marcações:
+Registro de ponto diário:
 
 Entrada
 
@@ -39,7 +39,7 @@ Tempo trabalhado no dia
 
 Saldo diário (positivo ou negativo)
 
-Banco de horas acumulado por período
+Banco de horas acumulado
 
 Tratamento de:
 
@@ -47,45 +47,36 @@ Faltas
 
 Atestados (não impactam o banco de horas)
 
-Histórico diário de registros
+Histórico de registros diários
 
-🏗️ Arquitetura do Sistema
+🏗️ Arquitetura
 
-O projeto segue uma arquitetura em camadas, com responsabilidades bem definidas:
+Arquitetura em camadas, com responsabilidades bem definidas:
 
 📱 Mobile App (futuro)
         ↓
 🌐 API REST (Spring Boot)
         ↓
-🧠 Domínio
+🧠 Camada de Domínio
         ↓
 🗄️ Banco de Dados
 
-🧠 Modelagem de Domínio (Core)
+🧠 Modelagem de Domínio
 🔹 Entidades
-User
 
+User
 Representa o usuário do sistema.
 
-id
-
-nome
-
-email
-
-senha
-
 RegistroDiario
-
-Representa um dia de trabalho realmente realizado.
+Representa um dia efetivamente trabalhado.
 
 Criado apenas quando o primeiro ponto é batido
 
 Controla a sequência correta dos pontos
 
-Possui estado interno (máquina de estados)
+Possui máquina de estados interna
 
-Estados possíveis:
+Estados:
 
 INICIAL
 
@@ -98,11 +89,10 @@ VOLTA_ALMOCO_REGISTRADA
 FECHADO
 
 🔹 Value Objects
+
 JornadaTrabalho
 
 Representa a carga horária esperada (ex: 8h30min)
-
-Regra fixa do domínio
 
 BancoHoras
 
@@ -111,47 +101,46 @@ Mantém o saldo acumulado do usuário
 Atualizado a partir dos saldos diários
 
 🔹 Services
+
 RegistroPontoService
 
-Orquestra a criação do RegistroDiario
+Orquestra a criação do registro diário
 
-Encaminha a batida de ponto para a entidade correta
+Encaminha as batidas de ponto para a entidade
 
 FechamentoDiaService
 
-Responsável por:
+Identifica dias sem registro
 
-Identificar dias sem registro
+Aplica regras de falta ou atestado
 
-Aplicar regra de FALTA ou ATESTADO
+Atualiza o banco de horas
 
-Atualizar o banco de horas
-
-📐 Regras de Negócio Importantes
+📐 Regras de Negócio
 
 O dia só é considerado trabalhado se o primeiro ponto for batido
 
-O dia é fechado automaticamente ao bater o 4º ponto
+O dia é fechado automaticamente no 4º ponto
 
 Não é permitido bater ponto fora de ordem
 
-Um registro diário fechado é imutável
+Registros fechados são imutáveis
 
 Dias sem registro são considerados falta
 
 Faltas impactam negativamente o banco de horas
 
-Atestados removem o impacto negativo da falta
+Atestados removem o impacto negativo
 
-Não existe limite para saldo positivo ou negativo
+Não há limite para saldo positivo ou negativo
 
 ⏰ Tratamento de Tempo
 
-Utiliza a API moderna java.time
+Uso da API moderna java.time
 
-Horários são capturados pelo sistema (não pelo usuário)
+Horários capturados pelo sistema
 
-Uso de Clock para garantir:
+Utilização de Clock para garantir:
 
 Segurança
 
@@ -159,7 +148,7 @@ Testabilidade
 
 Previsibilidade
 
-🛠️ Tecnologias Utilizadas
+🛠️ Tecnologias
 Backend
 
 Java
@@ -198,16 +187,14 @@ Máquina de estados
 
 Arquitetura em camadas
 
-Design orientado a domínio
-
-🚀 Status do Projeto
+🚀 Status
 
 🛠️ Em desenvolvimento
 Foco atual: construção sólida do domínio e backend.
 
 👨‍💻 Autor
-
-Kauã Henrique 
-"Dedico esse projeto ao maior arquiteto, engenheiro, programador de todos os tempo, meu Senhor Jesus Cristo"
+Kauã Henrique
 Estudante de Ciência da Computação
-Foco em Back-end Java e Engenharia de Software.
+Foco em Back-end Java e Engenharia de Software
+
+“Dedico este projeto ao maior arquiteto e engenheiro de todos os tempos, meu Senhor Jesus Cristo.
