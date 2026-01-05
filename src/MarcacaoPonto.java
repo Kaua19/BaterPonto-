@@ -18,4 +18,21 @@ public class MarcacaoPonto {
     public LocalTime getHorario() {
         return horario;
     }
+
+    public static MarcacaoPonto entrada(LocalTime horario) {
+        return new MarcacaoPonto(TipoPonto.ENTRADA, horario);
+    }
+
+    public static MarcacaoPonto saidaAlmoco(LocalTime horario) {
+        return new MarcacaoPonto(TipoPonto.SAIDA_ALMOCO, horario);
+    }
+
+    public static MarcacaoPonto voltaAlmoco(LocalTime horario) {
+        return new MarcacaoPonto(TipoPonto.VOLTA_ALMOCO, horario);
+    }
+
+    public static MarcacaoPonto saida(LocalTime horario) {
+        return new MarcacaoPonto(TipoPonto.SAIDA, horario);
+    }
+
 }
