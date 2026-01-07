@@ -35,11 +35,20 @@ public class ApuracaoDiaria {
         return totalTrabalhado;
     }
 
-    public long getTotalEmMinutos() {
-        return totalTrabalhado.toMinutes();
+    public int getTotalEmHoras() {
+        return totalTrabalhado.toHoursPart();
     }
 
-    public long getTotalEmHoras() {
-        return totalTrabalhado.toHours();
+    public long getTotalEmMinutos() {
+        return totalTrabalhado.toMinutesPart();
     }
+
+    public int getTotalEmSegundos() {
+        return totalTrabalhado.toSecondsPart();
+    }
+
+
+
+
+
 }
